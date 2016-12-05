@@ -14,6 +14,7 @@ import { HeaderComponent, FooterComponent } from './shared';
 // featured modules
 import { SharedModule } from './shared';
 import { HomeModule } from './home/home.module';
+import { AuthModule } from './auth/auth.module';
 
 // services
 import { UserService } from './shared';
@@ -24,7 +25,8 @@ const rootRouting = RouterModule.forRoot([], {useHash: true});
 // imported modules
 const appModules = [
   SharedModule,
-  HomeModule
+  HomeModule,
+  AuthModule
 ];
 
 
