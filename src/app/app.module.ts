@@ -14,13 +14,20 @@ import { HeaderComponent, FooterComponent } from './shared';
 // featured modules
 import { HomeModule } from './home/home.module';
 
+// services
+import { UserService } from './shared';
+
 // router config
 const rootRouting = RouterModule.forRoot([], {useHash: true});
+
+
 
 // imported modules
 const appModules = [
   HomeModule
 ];
+
+
 
 @NgModule({
   declarations: [
@@ -36,7 +43,9 @@ const appModules = [
     rootRouting,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [],
+  providers: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
