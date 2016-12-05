@@ -7,6 +7,8 @@ import { SharedModule } from './../shared';
 
 import { AuthComponent } from './auth.component';
 
+
+
 const routing = RouterModule.forChild([
 	{
 		path: 'login',
@@ -22,7 +24,8 @@ const routing = RouterModule.forChild([
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    routing
   ],
   declarations: [
   	AuthComponent

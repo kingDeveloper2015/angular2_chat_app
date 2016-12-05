@@ -1,0 +1,27 @@
+.container {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+h1 {
+	display: flex;
+	flex: 80;
+}
+
+.loginBox {
+	display: flex;
+	flex: 80;
+	flex-direction: column;
+}
+
+.error-message {
+	color: #ff0033;
+}
+
+.spinner {
+	width: 30px;
+	height: 30px;
+}
