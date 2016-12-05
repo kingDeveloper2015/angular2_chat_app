@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+// firebase
+import { AngularFireModule } from 'angularfire2';
+import { firebaseConfig } from './../environments/firebase.config';
+
 // required components
 import { AppComponent } from './app.component';
 import { HeaderComponent, FooterComponent } from './shared';
@@ -29,7 +33,8 @@ const appModules = [
     BrowserModule,
     FormsModule,
     appModules,
-    rootRouting
+    rootRouting,
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
