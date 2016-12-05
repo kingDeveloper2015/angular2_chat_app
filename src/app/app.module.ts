@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent, FooterComponent } from './shared';
 
 // featured modules
+import { SharedModule } from './shared';
 import { HomeModule } from './home/home.module';
 
 // services
@@ -20,10 +21,9 @@ import { UserService } from './shared';
 // router config
 const rootRouting = RouterModule.forRoot([], {useHash: true});
 
-
-
 // imported modules
 const appModules = [
+  SharedModule,
   HomeModule
 ];
 
@@ -41,6 +41,7 @@ const appModules = [
     FormsModule,
     appModules,
     rootRouting,
+
     AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [
