@@ -13,7 +13,7 @@ export class ChannelsComponent implements OnInit {
 	channels$: Observable<any[]>;
 	channels: any[];
 
-	loading: false;
+	loading = false;
 
   constructor(
   	private channelsService: ChannelsService

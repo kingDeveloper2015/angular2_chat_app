@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessagesComponent implements OnInit {
 
-  constructor() { }
+	channelId: string;
+
+  constructor(
+  	private router: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+  	this.router.url.subscribe(data => {
+  		this.channelId = data[data.length - 1].path;
+  		console.log(this.channelId);
+  	})
   }
 
+  submit(message: string) {
+  	
+  }
 }

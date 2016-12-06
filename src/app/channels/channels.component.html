@@ -2,9 +2,12 @@
 
 <nav class="channel-sidebar nav nav-pills nav-stacked">		
 	
+		
+		<h5>CHANNELS</h5>
 		<span *ngIf="loading">Loading...</span>
 		<a class="nav-link"
 				[routerLink]="['/channels', channel.$key]"
+				[routerLinkActive]="['channel-active']"
 				*ngFor="let channel of channels">
 			# {{channel.name}}
 		</a>

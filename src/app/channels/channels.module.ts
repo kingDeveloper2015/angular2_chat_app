@@ -9,13 +9,15 @@ import { RouterModule } from '@angular/router';
 
 const routing = RouterModule.forChild([
 	{
-		path: 'channels',
-		component: ChannelsComponent
-	},
-  {
-    path: 'channels/:id',
-    component: MessagesComponent
-  }
+		path: 'channels',    
+		component: ChannelsComponent,
+    children: [
+      {
+        path: ':id',
+        component: MessagesComponent
+      }
+    ]
+	}
 
 
 ])
@@ -27,7 +29,8 @@ const routing = RouterModule.forChild([
     routing
   ],
   declarations: [
-  	ChannelsComponent
+  	ChannelsComponent,
+    MessagesComponent
   ]
 })
 export class ChannelsModule { }

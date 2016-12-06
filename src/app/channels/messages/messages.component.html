@@ -1,3 +1,20 @@
-<p>
-  messages works!
-</p>
+<div class="message-container">
+	
+
+	<p>
+		{{ channelId }}
+	</p>
+
+	<form (ngSubmit)="submit(input.value)" class="send-box">
+
+		<fieldset>
+
+			<fieldset class="form-group">
+				<input type="text" class="formcontrol" #input>
+				<button type="submit">Send</button>
+			</fieldset>
+
+
+		</fieldset>
+	</form>
+</div>

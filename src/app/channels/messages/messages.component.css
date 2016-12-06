@@ -1,0 +1,9 @@
+
+.send-box {
+	bottom: -100px;
+	position: absolute;
+}
+
+.message-container {
+	height: 400px;
+}
