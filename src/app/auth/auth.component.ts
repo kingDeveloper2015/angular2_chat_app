@@ -36,6 +36,7 @@ export class AuthComponent implements OnInit {
 
 	submit(email, password) {
 		this.loading = true;
+		this.message = null;
 		if (this.authType === 'register') {
 			this.authService.register(email, password).catch(
 				(err) => {

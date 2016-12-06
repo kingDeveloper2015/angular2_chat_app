@@ -1,10 +1,27 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
+import { SharedModule } from './../shared';
+
+import { ChannelsComponent } from './channels.component';
+
+import { RouterModule } from '@angular/router';
+
+const routing = RouterModule.forChild([
+	{
+		path: 'channels',
+		component: ChannelsComponent
+	}
+
+])
+
 
 @NgModule({
   imports: [
-    CommonModule
+    SharedModule,
+    routing
   ],
-  declarations: []
+  declarations: [
+  	ChannelsComponent
+  ]
 })
 export class ChannelsModule { }
