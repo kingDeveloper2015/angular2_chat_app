@@ -1,7 +1,15 @@
-.channel-list {
-	background-color: #34495e;
-	color: #fff;
+.channel-container {
 	display: flex;
 	height: 100%;
 }
 
+nav {
+	background-color: #34495e;
+	width: 200px;
+	color: #fff;	
+}
+
+.content {
+	background-color: yellow;
+	flex: 1;
+}

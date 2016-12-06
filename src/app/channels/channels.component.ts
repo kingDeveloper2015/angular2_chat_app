@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ChannelsService } from './../shared';
+import { Observable } from 'rxjs/Rx';
+
 @Component({
   selector: 'app-channels',
   templateUrl: './channels.component.html',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChannelsComponent implements OnInit {
 
-  constructor() { }
+	channels$: Observable<any[]>;
+
+  constructor(
+  	private channelsService: ChannelsService
+  ) { }
 
   ngOnInit() {
+  	this.channels$ = this.channelsService.getAll();  	
   }
 
 }
