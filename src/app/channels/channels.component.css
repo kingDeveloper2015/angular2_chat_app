@@ -1,6 +1,7 @@
 .channel-container {
 	display: flex;
 	height: 100%;
+	padding-top: 50px;
 }
 
 .channel-sidebar {
@@ -13,8 +14,7 @@ nav {
 	color: #fff;	
 }
 
-.content {
-	background-color: yellow;
+.content {	
 	flex: 1;
 }
 
@@ -33,5 +33,6 @@ nav {
 .channel-active {
 	background-color: #2ec771;
 }
+
 
 

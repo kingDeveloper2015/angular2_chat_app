@@ -1,19 +1,24 @@
 <div class="message-container">
-	
 
-	<p>
-		{{ channelId }}
-	</p>
+	<div class="container-fluid top">
+		<div class="row">
+			<div class="col-xs-12">
+				<p>{{ channelId }} qwe qwe qwe qw</p>	
+			</div>	
+		</div>
+	</div>
 
-	<form (ngSubmit)="submit(input.value)" class="send-box">
+	<form (ngSubmit)="submit(input.value)" >
 
-		<fieldset>
+		<fieldset class="send-box">
 
-			<fieldset class="form-group">
-				<input type="text" class="formcontrol" #input>
-				<button type="submit">Send</button>
+			<fieldset class="form-group col-xs-10">
+				<input type="text" #input>				
 			</fieldset>
 
+			<fieldset class="form-group col-xs-2">
+				<button class="btn btn-default">Send</button>
+			</fieldset>
 
 		</fieldset>
 	</form>
