@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from './../shared';
 
 import { ChannelsComponent } from './channels.component';
+import { MessagesComponent } from './messages/messages.component';
 
 import { RouterModule } from '@angular/router';
 
@@ -10,7 +11,12 @@ const routing = RouterModule.forChild([
 	{
 		path: 'channels',
 		component: ChannelsComponent
-	}
+	},
+  {
+    path: 'channels/:id',
+    component: MessagesComponent
+  }
+
 
 ])
 
