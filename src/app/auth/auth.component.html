@@ -1,0 +1,15 @@
+
+<div class="container" layout="row">
+	<h1>{{getTitle()}}</h1>
+	<span *ngIf="message" class="error-message">{{message}}</span>
+	<div flex="50" layout="column">
+		<input type="email" placeholder="Email" #email>
+		<input type="password" placeholder="Password" #password>
+
+		<div layout="row" flex="1">
+		<button  (click)="submit(email.value, password.value)">{{getTitle()}}
+
+		</button>
+		</div>
+	</div>
+</div>

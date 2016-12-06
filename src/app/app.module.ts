@@ -5,26 +5,28 @@ import { RouterModule } from '@angular/router';
 
 // firebase
 import { AngularFireModule } from 'angularfire2';
-import { firebaseConfig } from './../environments/firebase.config';
+import { firebaseConfig, firebaseAuthConfig } from './../environments/firebase.config';
 
 // required components
 import { AppComponent } from './app.component';
 import { HeaderComponent, FooterComponent } from './shared';
 
 // featured modules
+import { SharedModule } from './shared';
 import { HomeModule } from './home/home.module';
+import { AuthModule } from './auth/auth.module';
 
 // services
-import { UserService } from './shared';
+import { UserService, AuthService } from './shared';
 
 // router config
 const rootRouting = RouterModule.forRoot([], {useHash: true});
 
-
-
 // imported modules
 const appModules = [
-  HomeModule
+  SharedModule,
+  HomeModule,
+  AuthModule
 ];
 
 
@@ -41,10 +43,11 @@ const appModules = [
     FormsModule,
     appModules,
     rootRouting,
-    AngularFireModule.initializeApp(firebaseConfig)
+
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig)
   ],
   providers: [
-
+    AuthService, UserService
   ],
   bootstrap: [AppComponent]
 })

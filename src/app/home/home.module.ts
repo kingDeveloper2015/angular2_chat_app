@@ -4,7 +4,9 @@ import { RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home.component';
 
-import { MaterialModule } from '@angular/material';
+import { SharedModule } from './../shared';
+
+
 
 // router config
 const routing = RouterModule.forChild([
@@ -24,7 +26,7 @@ const routing = RouterModule.forChild([
   imports: [
     CommonModule,
     routing,
-    MaterialModule.forRoot()
+    SharedModule
   ],
   declarations: [
   	HomeComponent
