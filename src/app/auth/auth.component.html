@@ -1,15 +1,29 @@
 
-<div class="container" layout="row">
-	<h1>{{getTitle()}}</h1>
-	<span *ngIf="message" class="error-message">{{message}}</span>
-	<div flex="50" layout="column">
-		<input type="email" placeholder="Email" #email>
-		<input type="password" placeholder="Password" #password>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
 
-		<div layout="row" flex="1">
-		<button  (click)="submit(email.value, password.value)">{{getTitle()}}
 
-		</button>
+			<span *ngIf="message" class="error-message">{{message}}</span>
+
+			<h1>{{getTitle()}}</h1>			
+			<form (submit)="submit(email.value, password.value)">
+				<fieldset>
+
+					<fieldset class="form-group">
+						<input class="form-control" type="email" placeholder="Email" #email>			
+					</fieldset>
+
+					<fieldset class="form-group">						
+						<input class="form-control" type="password" placeholder="Password" #password>
+					</fieldset>					
+
+					<button type="submit" class="btn btn-primary">{{getTitle()}}
+					</button>
+
+				</fieldset>
+				
+			</form>
 		</div>
 	</div>
 </div>

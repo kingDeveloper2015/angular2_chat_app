@@ -15,6 +15,7 @@ import { HeaderComponent, FooterComponent } from './shared';
 import { SharedModule } from './shared';
 import { HomeModule } from './home/home.module';
 import { AuthModule } from './auth/auth.module';
+import { ChannelsModule } from './channels/channels.module';
 
 // services
 import { UserService, AuthService } from './shared';
@@ -26,7 +27,8 @@ const rootRouting = RouterModule.forRoot([], {useHash: true});
 const appModules = [
   SharedModule,
   HomeModule,
-  AuthModule
+  AuthModule,
+  ChannelsModule
 ];
 
 
@@ -36,7 +38,6 @@ const appModules = [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-
   ],
   imports: [
     BrowserModule,
