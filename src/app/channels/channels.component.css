@@ -3,6 +3,10 @@
 	height: 100%;
 }
 
+.channel-sidebar {
+	padding: 15px;
+}
+
 nav {
 	background-color: #34495e;
 	width: 200px;
@@ -12,4 +16,12 @@ nav {
 .content {
 	background-color: yellow;
 	flex: 1;
+}
+
+.nav-pills a {
+	color: #fff;	
+}
+
+.nav-pills a:hover {
+	background-color: #560000;
 }

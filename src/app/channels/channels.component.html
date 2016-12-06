@@ -1,15 +1,19 @@
 <div class="channel-container">
 
-		<nav>
-			<ul class="nav nav-pills nav-stacked">
-				<li class="nav-item" *ngFor="let channel of channels$ | async">
-					# {{channel.name}}
-				</li>				
-			</ul>
-		</nav>
+<nav class="channel-sidebar nav nav-pills nav-stacked">		
+	
+		<span *ngIf="loading">Loading...</span>
+		<a class="nav-link"
+				[routerLink]="['/channels', channel.$key]"
+				*ngFor="let channel of channels">
+			# {{channel.name}}
+		</a>
 
-		<section class="content">
-			<router-outlet></router-outlet>
-		</section>
+
+	</nav>
+
+	<section class="content">
+		<router-outlet></router-outlet>
+	</section>
 
 </div>
