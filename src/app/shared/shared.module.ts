@@ -18,6 +18,10 @@ import { ShowAuthedDirective } from './show-authed.directive';
 		CommonModule,
 
 		ShowAuthedDirective
+	],
+
+	providers: [
+		
 	]
 })
 export class SharedModule { }

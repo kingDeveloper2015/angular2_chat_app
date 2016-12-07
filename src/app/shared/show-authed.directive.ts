@@ -12,7 +12,7 @@ import { AuthService } from './services';
 	selector: '[showAuthed]'
 })
 export class ShowAuthedDirective implements OnInit {
-	condition: boolean;
+	condition: boolean= false;
 
 	constructor(
 		private templateRef: TemplateRef<any>,
@@ -23,14 +23,19 @@ export class ShowAuthedDirective implements OnInit {
 	}
 
 	ngOnInit() {
-		this.authService.isAuthenticated().subscribe(isAuthenticated => {
-			if (isAuthenticated && this.condition || !isAuthenticated && !this.condition) {
-				this.viewContainer.createEmbeddedView(this.templateRef);
-			} else {
-				this.viewContainer.clear();
-			}
-		})
-	}
+    this.authService.isAuthenticated.subscribe(     	
+      (isAuthenticated) => {
+      	console.log(this.authService.isAuthenticated);
+      	console.log("CHECKING AUTH: " + isAuthenticated);
+        if (isAuthenticated && this.condition || !isAuthenticated && !this.condition) {
+        	this.viewContainer.clear();
+          this.viewContainer.createEmbeddedView(this.templateRef);
+        } else {
+          this.viewContainer.clear();
+        }
+      }
+    )
+  }
 
 	@Input() set showAuthed(condition: boolean) {
 		this.condition = condition;

@@ -9,6 +9,9 @@ import { AuthComponent } from './auth.component';
 
 import { NoAuthGuard } from './no-auth.service';
 
+import { LogoutResolver } from './../shared';
+import { LogoutComponent } from './logout.component';
+
 const routing = RouterModule.forChild([
 	{
 		path: 'login',
@@ -20,6 +23,10 @@ const routing = RouterModule.forChild([
 		component: AuthComponent,
 		canActivate: [NoAuthGuard]
 	},
+  {
+    path: 'logout',
+    component: LogoutComponent
+  }
 
 ])
 
@@ -30,7 +37,8 @@ const routing = RouterModule.forChild([
     routing
   ],
   declarations: [
-  	AuthComponent
+  	AuthComponent,
+    LogoutComponent
   ],
   providers: [
   	NoAuthGuard

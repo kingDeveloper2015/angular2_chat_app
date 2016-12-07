@@ -5,7 +5,8 @@ import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
 
 import { SharedModule } from './../shared';
-
+import { NoAuthGuard } from './../auth/no-auth.service';
+import { HomeAuthResolver } from './home-auth.resolver';
 
 
 // router config
@@ -17,7 +18,8 @@ const routing = RouterModule.forChild([
 	},
 	{
 		path: 'home',
-		component: HomeComponent
+		component: HomeComponent,
+		canActivate: [NoAuthGuard]
 	}
 ]);
 
@@ -30,6 +32,9 @@ const routing = RouterModule.forChild([
   ],
   declarations: [
   	HomeComponent
+  ],
+  providers: [
+  	HomeAuthResolver
   ]
 })
 export class HomeModule { }

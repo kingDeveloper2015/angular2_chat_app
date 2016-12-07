@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from './../shared';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
 	selector: 'app-auth',
@@ -18,7 +18,8 @@ export class AuthComponent implements OnInit {
 
 	constructor(
 		private authService: AuthService,
-		private route: ActivatedRoute
+		private route: ActivatedRoute,
+		private router: Router
 		) {
 		route.url.subscribe(
 			(data) => {
@@ -45,8 +46,14 @@ export class AuthComponent implements OnInit {
 				}
 			)
 		} else {
-			console.log("LOGIN");
-			this.authService.login(email, password).catch(
+			this.authService.login(email, password)
+			.then(
+				() => {
+					console.log('LOGIN SUCCESSFULLY');
+					this.router.navigate(['/channels']);
+				}
+			)
+			.catch(
 				(err) => {
 					this.message = err.message;
 					this.loading = false;
