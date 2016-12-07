@@ -18,7 +18,7 @@ import { AuthModule } from './auth/auth.module';
 import { ChannelsModule } from './channels/channels.module';
 
 // services
-import { UserService, AuthService, ChannelsService } from './shared';
+import { UserService, AuthService, ChannelsService, AuthGuard } from './shared';
 
 // router config
 const rootRouting = RouterModule.forRoot([], {useHash: true});
@@ -48,7 +48,7 @@ const appModules = [
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig)
   ],
   providers: [
-    AuthService, UserService, ChannelsService
+    AuthService, UserService, ChannelsService, AuthGuard
   ],
   bootstrap: [AppComponent]
 })

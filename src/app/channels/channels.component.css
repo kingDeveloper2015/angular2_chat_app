@@ -11,15 +11,15 @@
 nav {
 	background-color: #34495e;
 	width: 200px;
-	color: #fff;	
+	color: #fff;
 }
 
-.content {	
+.content {
 	flex: 1;
 }
 
 .nav-pills a {
-	color: #fff;	
+	color: #fff;
 }
 
 .nav-pills a:hover {
@@ -27,7 +27,7 @@ nav {
 }
 
 .nav-pills a.channel-active:hover {
-	background-color: #2ec771;	
+	background-color: #2ec771;
 }
 
 .channel-active {

@@ -7,10 +7,13 @@ import { MessagesComponent } from './messages/messages.component';
 
 import { RouterModule } from '@angular/router';
 
+import { AuthGuard } from './../shared';
+
 const routing = RouterModule.forChild([
 	{
-		path: 'channels',    
+		path: 'channels',
 		component: ChannelsComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: ':id',
@@ -18,8 +21,6 @@ const routing = RouterModule.forChild([
       }
     ]
 	}
-
-
 ])
 
 

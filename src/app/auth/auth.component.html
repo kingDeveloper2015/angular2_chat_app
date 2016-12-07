@@ -1,29 +1,29 @@
 
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
 		<div class="col-md-6 offset-md-3">
 
 
 			<span *ngIf="message" class="error-message">{{message}}</span>
 
-			<h1>{{getTitle()}}</h1>			
+			<h1>{{getTitle()}}</h1>
 			<form (ngSubmit)="submit(email.value, password.value)">
 				<fieldset>
 
 					<fieldset class="form-group">
-						<input class="form-control" type="email" placeholder="Email" #email>			
+						<input class="form-control" type="email" placeholder="Email" #email>
 					</fieldset>
 
-					<fieldset class="form-group">						
+					<fieldset class="form-group">
 						<input class="form-control" type="password" placeholder="Password" #password>
-					</fieldset>					
+					</fieldset>
 
 					<button type="submit" class="btn btn-primary btn-block">{{getTitle()}}
 					&nbsp; <i *ngIf="loading"  class="fa fa-spinner fa-spin"></i>
 					</button>
 
 				</fieldset>
-				
+
 			</form>
 		</div>
 	</div>

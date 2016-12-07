@@ -7,16 +7,18 @@ import { SharedModule } from './../shared';
 
 import { AuthComponent } from './auth.component';
 
-
+import { NoAuthGuard } from './no-auth.service';
 
 const routing = RouterModule.forChild([
 	{
 		path: 'login',
-		component: AuthComponent
+		component: AuthComponent,
+		canActivate: [NoAuthGuard]
 	},
 	{
 		path: 'register',
-		component: AuthComponent
+		component: AuthComponent,
+		canActivate: [NoAuthGuard]
 	},
 
 ])
@@ -29,6 +31,9 @@ const routing = RouterModule.forChild([
   ],
   declarations: [
   	AuthComponent
+  ],
+  providers: [
+  	NoAuthGuard
   ]
 })
 export class AuthModule { }

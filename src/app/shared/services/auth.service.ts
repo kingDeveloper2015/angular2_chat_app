@@ -2,8 +2,11 @@ import { Injectable } from '@angular/core';
 
 import { AngularFire } from 'angularfire2';
 
+import { Observable } from 'rxjs/Rx';
+
 @Injectable()
 export class AuthService {
+
 
 	constructor(
 		private af: AngularFire
@@ -25,8 +28,26 @@ export class AuthService {
 			email: email,
 			password: password
 		};
-		return this.af.auth.login(credentials).then(
-			() => console.log("LOGIN SUCCESSFULLY")
-		);
+		return this.af.auth.login(credentials);
+	}
+
+	logout() {
+		this.af.auth.logout();
+	}
+
+	currentUserId(): Observable<string> {
+		return this.af.auth.map(state => state.uid);
+	}
+
+	isAuthenticated(): Observable<boolean> {
+		return this.af.auth
+			.first()
+			.mergeMap((user) => {
+				if (user && user.auth) {
+					return Observable.of(true);
+				} else {
+					return Observable.of(false);
+				}
+			})
 	}
 }
