@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AuthService } from './../shared';
+import { UserService } from './../shared';
 
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
 	selector: 'app-auth',
@@ -16,49 +17,48 @@ export class AuthComponent implements OnInit {
 
 	loading = false;
 
+	authForm: FormGroup;
+	title: string;
+
 	constructor(
-		private authService: AuthService,
+		private userService: UserService,
 		private route: ActivatedRoute,
-		private router: Router
+		private router: Router,
+		private fb: FormBuilder
 		) {
-		route.url.subscribe(
+
+		this.authForm = this.fb.group({
+			'email': '',
+			'password': ''
+		})
+	}
+
+	ngOnInit() {
+		this.route.url.subscribe(
 			(data) => {
 				this.authType = data[data.length - 1].path;
+				this.title = this.authType === 'login' ? 'Login' : 'Register';
+				if (this.authType === 'register') {
+					this.authForm.addControl('displayName', new FormControl());
+				}
 			}
 		)
 	}
 
-	ngOnInit() {
-	}
-
-	getTitle(): string {
-		return this.authType === 'login' ? 'Login': 'Register';
-	}
-
 	submit(email, password) {
+		if (this.authForm.invalid) return;
 		this.loading = true;
 		this.message = null;
-		if (this.authType === 'register') {
-			this.authService.register(email, password).catch(
-				(err) => {
-					this.message = err.message;
+		console.log(this.authForm.value);
+		this.userService.attempAuth(this.authType, this.authForm.value)
+			.subscribe(
+				user => {
+					this.router.navigate(['/']);
+				},
+				err => {
 					this.loading = false;
-				}
-			)
-		} else {
-			this.authService.login(email, password)
-			.then(
-				() => {
-					console.log('LOGIN SUCCESSFULLY');
-					this.router.navigate(['/channels']);
-				}
-			)
-			.catch(
-				(err) => {
 					this.message = err.message;
-					this.loading = false;
 				}
-			)
-		}
+			);
 	}
 }

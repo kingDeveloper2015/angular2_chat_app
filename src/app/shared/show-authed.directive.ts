@@ -6,36 +6,33 @@ import {
 	ViewContainerRef
 } from '@angular/core';
 
-import { AuthService } from './services';
+import { UserService } from './services';
 
 @Directive({
 	selector: '[showAuthed]'
 })
 export class ShowAuthedDirective implements OnInit {
-	condition: boolean= false;
+	condition: boolean = false;
 
 	constructor(
 		private templateRef: TemplateRef<any>,
 		private viewContainer: ViewContainerRef,
-		private authService: AuthService
+		private userService: UserService
 	) {
 
 	}
 
 	ngOnInit() {
-    this.authService.isAuthenticated.subscribe(     	
-      (isAuthenticated) => {
-      	console.log(this.authService.isAuthenticated);
-      	console.log("CHECKING AUTH: " + isAuthenticated);
-        if (isAuthenticated && this.condition || !isAuthenticated && !this.condition) {
-        	this.viewContainer.clear();
-          this.viewContainer.createEmbeddedView(this.templateRef);
-        } else {
-          this.viewContainer.clear();
-        }
-      }
-    )
-  }
+		this.userService.isAuthenticated.subscribe(
+			(isAuthenticated) => {
+				if (isAuthenticated && this.condition || !isAuthenticated && !this.condition) {
+					this.viewContainer.createEmbeddedView(this.templateRef);
+				} else {
+					this.viewContainer.clear();
+				}
+			}
+		)
+	}
 
 	@Input() set showAuthed(condition: boolean) {
 		this.condition = condition;
