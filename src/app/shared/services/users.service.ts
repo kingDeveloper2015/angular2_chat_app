@@ -24,12 +24,13 @@ export class UserService {
 
 	populate() {
 		this.af.auth.map(authState => {
+			if (!authState) return Observable.throw('no auth detected');
 			return new User({id: authState.uid})
 		})
 		.flatMap(user => {
 			return this.requestUserData(user);
 		})
-		.subscribe(console.log);
+		.subscribe();
 	}
 
 	setAuth(user: User) {

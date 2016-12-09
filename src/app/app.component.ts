@@ -13,6 +13,6 @@ export class AppComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		return this.userService.populate();
+		this.userService.populate();
 	}
 }
