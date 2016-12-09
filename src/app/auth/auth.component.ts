@@ -49,10 +49,10 @@ export class AuthComponent implements OnInit {
 		if (this.authForm.invalid) return;
 		this.loading = true;
 		this.message = null;
-		console.log(this.authForm.value);
 		this.userService.attempAuth(this.authType, this.authForm.value)
 			.subscribe(
 				user => {
+					console.log('USER: ', user);
 					this.router.navigate(['/']);
 				},
 				err => {

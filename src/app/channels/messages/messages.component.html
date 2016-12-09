@@ -3,7 +3,21 @@
 	<div class="container-fluid top">
 		<div class="row">
 			<div class="col-xs-12">
-				<p>{{ channelId }} qwe qwe qwe qw</p>
+
+
+
+				<div class="media" *ngFor="let message of messages">
+					<div class="media-left" href="#">
+						<img class="media-object avatar " src="..." alt="Generic placeholder image">
+					</div>
+					<div class="media-body">
+						<h4 class="media-heading">{{message.senderName}}</h4>
+						{{message.body}}
+					</div>
+				</div>
+
+
+
 			</div>
 		</div>
 	</div>

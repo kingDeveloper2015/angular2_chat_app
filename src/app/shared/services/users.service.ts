@@ -9,17 +9,27 @@ import { User } from './../models';
 @Injectable()
 export class UserService {
 
-	private _currentUserSubject = new BehaviorSubject<User>(null);
+	private _currentUserSubject = new BehaviorSubject<User>(new User());
 
 	public currentUser = this._currentUserSubject.asObservable().distinctUntilChanged();
 	public isAuthenticated: Observable<boolean>;
 
 	constructor(
 		private af: AngularFire
-	) {
+		) {
 		this.isAuthenticated = this.af.auth.map(state => {
 			return state != null;
 		})
+	}
+
+	populate() {
+		this.af.auth.map(authState => {
+			return new User({id: authState.uid})
+		})
+		.flatMap(user => {
+			return this.requestUserData(user);
+		})
+		.subscribe(console.log);
 	}
 
 	setAuth(user: User) {
@@ -35,21 +45,24 @@ export class UserService {
 		if (type === 'login') {
 			promise = this.af.auth.login(credentials).then((authState) => {
 				let user = new User({id: authState.uid});
-				this.setAuth(user);
 				return user;
-			});
+			});	
+			return Observable.fromPromise(<Promise<User>>promise)
+			.flatMap(user => {
+				return this.requestUserData(user);
+			})
 		} else {
-				promise = this.af.auth.createUser(credentials).then((authState) => {
+			promise = this.af.auth.createUser(credentials).then((authState) => {				
 				let user = new User({id: authState.uid});
 				user.displayName = credentials.displayName;
 				// save users to firebase database
-				console.log('USER TO SAVE: ', user);
-				this.af.database.object('/users' + user.id).set(user);
+				this.af.database.object('/users/' + user.id).set(user);
 				this.setAuth(user);
 				return user;
 			});
+			return Observable.fromPromise(<Promise<User>>promise) ;
 		}
-		return Observable.fromPromise(<Promise<User>>promise) ;
+		
 	}
 
 	logout() {
@@ -57,5 +70,16 @@ export class UserService {
 		this.purgeAuth();
 	}
 
+	getCurrentUser(): User {
+		return this._currentUserSubject.value;
+	}
 
+	requestUserData(user): Observable<User> {
+		return this.af.database.object('/users/' + user.id)
+		.map(res => {
+			user.displayName = res.displayName;
+			this.setAuth(user);
+			return user;
+		});
+	}
 }

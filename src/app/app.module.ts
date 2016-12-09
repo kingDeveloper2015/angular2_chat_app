@@ -18,11 +18,12 @@ import { AuthModule } from './auth/auth.module';
 import { ChannelsModule } from './channels/channels.module';
 
 // services
-import { UserService, AuthService, ChannelsService, AuthGuard, LogoutResolver } from './shared';
+import { UserService, AuthService, ChannelsService, MessageService, AuthGuard, LogoutResolver, AuthResolver } from './shared';
 
 
 // router config
-const rootRouting = RouterModule.forRoot([], {useHash: true});
+const rootRouting = RouterModule.forRoot([      
+ ], {useHash: true});
 
 // imported modules
 const appModules = [
@@ -49,7 +50,7 @@ const appModules = [
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig)
   ],
   providers: [
-    AuthService, UserService, ChannelsService, AuthGuard, LogoutResolver
+    AuthService, UserService, ChannelsService, MessageService, AuthGuard, LogoutResolver, AuthResolver
   ],
   bootstrap: [AppComponent]
 })

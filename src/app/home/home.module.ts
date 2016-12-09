@@ -11,11 +11,11 @@ import { HomeAuthResolver } from './home-auth.resolver';
 
 // router config
 const routing = RouterModule.forChild([
-	{
-		path: '',
-		redirectTo: 'home',
-		pathMatch: 'full'
-	},
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
 	{
 		path: 'home',
 		component: HomeComponent,

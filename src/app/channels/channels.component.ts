@@ -3,15 +3,17 @@ import { Component, OnInit } from '@angular/core';
 import { ChannelsService } from './../shared';
 import { Observable } from 'rxjs/Rx';
 
+import { Channel } from './../shared';
+
 @Component({
   selector: 'app-channels',
   templateUrl: './channels.component.html',
   styleUrls: ['./channels.component.css']
 })
 export class ChannelsComponent implements OnInit {
-
-	channels$: Observable<any[]>;
-	channels: any[];
+	
+  channels: Channel[];
+  private _channel$: Observable<Channel[]>;
 
 	loading = false;
 
@@ -21,9 +23,8 @@ export class ChannelsComponent implements OnInit {
 
   ngOnInit() {
   	this.loading = true;
-  	this.channels$ = this.channelsService.getAll();
-  	this.channels$.subscribe(data => {
-  		this.channels = data
+  	this.channelsService.getAll().subscribe(channels => {
+  		this.channels = channels
   		this.loading = false;
   	})  	
   }

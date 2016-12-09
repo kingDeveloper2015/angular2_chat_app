@@ -20,4 +20,15 @@
 .top {
 	flex: 1;
 	margin-left: 0;
+	overflow-y: auto;
+}
+
+.container-fluid {
+	padding-top: 50px;
+}
+
+.avatar {
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
 }
