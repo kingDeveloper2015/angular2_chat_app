@@ -7,14 +7,14 @@ import { Observable } from 'rxjs/Rx';
 export class AuthResolver implements Resolve<any> {
 	constructor(
 		private userService: UserService
-		) { 
-		
+		) {
+
 	}
 
 	resolve(
 		route: ActivatedRouteSnapshot,
 		state: RouterStateSnapshot
 		): any {
-		return this.userService.requestAuthData().subscribe(console.log);
+		return 'authresolver not implemented yet';
 	}
 }

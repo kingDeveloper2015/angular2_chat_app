@@ -27,7 +27,6 @@ export class MessagesComponent implements OnInit {
       this.messageService.get(this.channelId)
       .subscribe((messages) => {
         this.messages = messages;
-        console.log('There are :' + messages.length);
       })
     })
   }
@@ -35,8 +34,7 @@ export class MessagesComponent implements OnInit {
   submit(text: string) {
     let message = new Message({
       body: text,
-      senderId: this.userService.getCurrentUser().id,
-      senderName: this.userService.getCurrentUser().displayName
+      author: this.userService.getCurrentUser()
     })
     this.messageService.add(this.channelId, message);
 

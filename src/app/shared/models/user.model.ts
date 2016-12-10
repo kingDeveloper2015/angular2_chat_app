@@ -6,6 +6,6 @@ export class User {
   constructor(user?: any) {
     this.id = user && user.id || null;
     this.displayName = user && user.displayName || null;
-    this.avatarUrl = user && user.avatarUrl || null;
+    this.avatarUrl = user && user.avatarUrl || 'avatar.png';
   }
 }
