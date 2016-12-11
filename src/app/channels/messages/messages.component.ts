@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
-
-import { AuthService, ChannelsService, MessageService, Message, UserService } from './../../shared';
+import { Observable } from 'rxjs/Rx';
+import { AuthService, ChannelsService, MessageService, Message, UserService, HelperService } from './../../shared';
 
 
 @Component({
@@ -18,7 +18,8 @@ export class MessagesComponent implements OnInit {
   	private router: ActivatedRoute,
     private authService: AuthService,
     private messageService: MessageService,
-    private userService: UserService
+    private userService: UserService,
+    private helperService: HelperService
     ) { }
 
   ngOnInit() {
@@ -29,6 +30,10 @@ export class MessagesComponent implements OnInit {
         this.messages = messages;
       })
     })
+  }
+
+  getImageUrl(source: string): Observable<string>  {
+    return this.helperService.getImageUrlObservable(source);
   }
 
   submit(text: string) {

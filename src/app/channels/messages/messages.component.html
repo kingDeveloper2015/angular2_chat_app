@@ -7,22 +7,30 @@
 
 
 				<div class="media" *ngFor="let message of messages">
-					<div class="media-left" href="#">
-						<img class="media-object avatar " src="..." alt="Generic placeholder image">
-					</div>
-					<div class="media-body">
+
+					<figure class="reply-avatar media-left pr-1">
+						<span class="image is-75x75 mb-1">
+              <a>
+								<img class="is-circle is-outlined bg-white"
+										 [src]="message.author.avatarUrl">
+
+							</a>
+            </span>
+					</figure>
+
+					<div class="media-content">
 						<h4 class="media-heading">{{message.author.displayName}}</h4>
 						{{message.body}}
 					</div>
+
 				</div>
 
-
-
 			</div>
+
 		</div>
 	</div>
 
-	<form (ngSubmit)="submit(input.value)" >
+	<form (ngSubmit)="submit(input.value)">
 
 		<fieldset class="send-box">
 
